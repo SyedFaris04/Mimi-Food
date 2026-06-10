@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MimiFood – Smart Campus Food Delivery</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="phone-shell">
+    <div class="app" id="app">
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 1: SPLASH
+      ───────────────────────────────────────── -->
+      <div class="screen active" id="screen-splash">
+        <div class="splash-bg">
+          <div class="splash-logo-wrap">
+            <div class="splash-cat">
+              <svg width="90" height="90" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="45" cy="45" r="45" fill="rgba(255,255,255,0.18)"/>
+                <text x="45" y="62" text-anchor="middle" font-size="46">🐱</text>
+              </svg>
+            </div>
+            <div class="splash-brand">MimiFood</div>
+            <div class="splash-tagline">Smart Campus Food Delivery</div>
+          </div>
+          <div class="splash-loader">
+            <div class="splash-dots">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 2: ONBOARDING
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-onboard">
+        <div class="onboard-wrap">
+          <button class="skip-btn" onclick="goTo('screen-home')">Skip</button>
+          <div class="onboard-illo">
+            <div class="illo-card">
+              <span style="font-size:90px;line-height:1">🤔</span>
+            </div>
+          </div>
+          <div class="onboard-text">
+            <h2>Can't decide<br>what to eat?</h2>
+            <p>Let MimiFood's AI help you find the perfect meal near you — fast, affordable, and student-friendly.</p>
+          </div>
+          <div class="onboard-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <button class="btn-primary btn-full" onclick="goTo('screen-home')">
+            🤖 Let Mimi AI help you
+          </button>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 3: HOME DASHBOARD
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-home">
+        <div class="screen-scroll">
+          <!-- Status bar -->
+          <div class="status-bar">
+            <span class="status-time">2:00 PM</span>
+            <div class="status-icons">
+              <span>📶</span><span>🔋</span>
+            </div>
+          </div>
+          <!-- Header -->
+          <div class="home-header">
+            <div>
+              <div class="greeting">Hi Maryam 👋</div>
+              <div class="location-row">
+                <span class="location-pin">📍</span>
+                <span class="location-text">UPM Serdang</span>
+                <span class="location-arrow">▾</span>
+              </div>
+            </div>
+            <div class="avatar-btn" onclick="goTo('screen-ai')">
+              <span>🤖</span>
+            </div>
+          </div>
+          <!-- Search -->
+          <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search food, stall, cuisine..." readonly />
+          </div>
+          <!-- Recommended card -->
+          <div class="section-label">
+            <span class="chip-orange">Your class at 2:00 PM</span>
+            <span class="section-title">Recommended for you</span>
+          </div>
+          <div class="rec-card" onclick="goTo('screen-food-detail')">
+            <div class="rec-card-img">🍛</div>
+            <div class="rec-card-info">
+              <div class="rec-name">Nasi Ayam</div>
+              <div class="rec-meta">RM6.50 · 5 mins</div>
+              <div class="rec-stall">📍 Near Faculty A</div>
+            </div>
+            <button class="rec-order-btn" onclick="event.stopPropagation();goTo('screen-food-detail')">Order Now</button>
+          </div>
+          <!-- Smart Filters -->
+          <div class="section-label-plain">Smart Filters</div>
+          <div class="filter-grid">
+            <div class="filter-item" onclick="goTo('screen-discover')">
+              <div class="filter-icon orange-bg">🍽️</div>
+              <span>RM5 Meals</span>
+            </div>
+            <div class="filter-item" onclick="goTo('screen-discover')">
+              <div class="filter-icon orange-bg">💰</div>
+              <span>Under RM10</span>
+            </div>
+            <div class="filter-item" onclick="goTo('screen-discover')">
+              <div class="filter-icon orange-bg">📍</div>
+              <span>Near Me</span>
+            </div>
+            <div class="filter-item" onclick="goTo('screen-discover')">
+              <div class="filter-icon orange-bg">🟢</div>
+              <span>Open Now</span>
+            </div>
+            <div class="filter-item" onclick="goTo('screen-discover')">
+              <div class="filter-icon grey-bg">🌙</div>
+              <span>Night Food</span>
+            </div>
+            <div class="filter-item" onclick="goTo('screen-discover')">
+              <div class="filter-icon grey-bg">⚡</div>
+              <span>Short Queue</span>
+            </div>
+            <div class="filter-item" onclick="goTo('screen-discover')">
+              <div class="filter-icon grey-bg">🚚</div>
+              <span>Low Delivery</span>
+            </div>
+            <div class="filter-item" onclick="goTo('screen-discover')">
+              <div class="filter-icon grey-bg">···</div>
+              <span>More</span>
+            </div>
+          </div>
+          <!-- Popular stalls -->
+          <div class="section-row">
+            <span class="section-title">Popular Stalls</span>
+            <span class="see-all" onclick="goTo('screen-discover')">See All</span>
+          </div>
+          <div class="stall-list">
+            <div class="stall-row" onclick="goTo('screen-stall')">
+              <div class="stall-thumb">🏪</div>
+              <div class="stall-info">
+                <div class="stall-name">Kolej Kitchen</div>
+                <div class="stall-meta">⭐ 4.6 · 12 min queue</div>
+              </div>
+              <span class="heart-btn">♡</span>
+            </div>
+            <div class="stall-row" onclick="goTo('screen-stall')">
+              <div class="stall-thumb">🍜</div>
+              <div class="stall-info">
+                <div class="stall-name">Cafe Sihat</div>
+                <div class="stall-meta">⭐ 4.4 · 8 min queue</div>
+              </div>
+              <span class="heart-btn">♡</span>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom Nav -->
+        <nav class="bottom-nav">
+          <div class="nav-item active" onclick="goTo('screen-home')"><span>🏠</span><label>Home</label></div>
+          <div class="nav-item" onclick="goTo('screen-discover')"><span>🔍</span><label>Explore</label></div>
+          <div class="nav-item ai-btn" onclick="goTo('screen-ai')"><span>🤖</span><label>Mimi AI</label></div>
+          <div class="nav-item" onclick="goTo('screen-cart')"><span>🛒</span><label>Cart</label></div>
+          <div class="nav-item" onclick="goTo('screen-home')"><span>👤</span><label>Profile</label></div>
+        </nav>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 4: MIMI AI ASSISTANT
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-ai">
+        <div class="screen-scroll">
+          <div class="topbar">
+            <button class="back-btn" onclick="goTo('screen-home')">‹</button>
+            <div class="topbar-title-col">
+              <div class="topbar-title">Mimi AI 🤖</div>
+              <div class="topbar-sub">Your food decision buddy</div>
+            </div>
+            <div class="topbar-avatar">👤</div>
+          </div>
+
+          <div class="ai-bubble ai-bubble-bot">
+            <span>🤖</span>
+            <div class="bubble-text">Let's find the best meal for you!</div>
+          </div>
+
+          <!-- Budget -->
+          <div class="ai-section-label">What's your budget?</div>
+          <div class="ai-chips" id="budget-chips">
+            <button class="ai-chip" onclick="selectChip(this,'budget-chips')">RM5</button>
+            <button class="ai-chip" onclick="selectChip(this,'budget-chips')">RM10</button>
+            <button class="ai-chip" onclick="selectChip(this,'budget-chips')">RM15+</button>
+          </div>
+
+          <!-- Time -->
+          <div class="ai-section-label">How soon do you need it?</div>
+          <div class="ai-chips" id="time-chips">
+            <button class="ai-chip" onclick="selectChip(this,'time-chips')">5 min</button>
+            <button class="ai-chip" onclick="selectChip(this,'time-chips')">10 min</button>
+            <button class="ai-chip" onclick="selectChip(this,'time-chips')">15+ min</button>
+          </div>
+
+          <!-- Craving -->
+          <div class="ai-section-label">What are you craving?</div>
+          <div class="ai-chips" id="craving-chips">
+            <button class="ai-chip-food" onclick="selectChip(this,'craving-chips')"><span>🍚</span>Rice</button>
+            <button class="ai-chip-food" onclick="selectChip(this,'craving-chips')"><span>🍜</span>Noodles</button>
+            <button class="ai-chip-food" onclick="selectChip(this,'craving-chips')"><span>🍗</span>Western</button>
+            <button class="ai-chip-food" onclick="selectChip(this,'craving-chips')"><span>🧃</span>Drinks</button>
+            <button class="ai-chip-food" onclick="selectChip(this,'craving-chips')"><span>🍟</span>Snacks</button>
+          </div>
+
+          <!-- AI results -->
+          <div class="ai-bubble ai-bubble-bot" style="margin-top:16px">
+            <span>🤖</span>
+            <div class="bubble-text">Great! Here are the best options for you 👇</div>
+          </div>
+
+          <div class="ai-result-card" onclick="goTo('screen-food-detail')">
+            <div class="ai-result-img">🍛</div>
+            <div class="ai-result-info">
+              <div class="ai-result-name">Nasi Ayam</div>
+              <div class="ai-result-meta">RM6.50 · Kolej Kitchen</div>
+              <div class="ai-result-tags">
+                <span class="tag-green">5 min</span>
+                <span class="tag-blue">Near You</span>
+              </div>
+            </div>
+            <button class="btn-sm-orange" onclick="event.stopPropagation();goTo('screen-food-detail')">Order</button>
+          </div>
+
+          <div class="ai-result-card" onclick="goTo('screen-food-detail')">
+            <div class="ai-result-img">🍜</div>
+            <div class="ai-result-info">
+              <div class="ai-result-name">Tomyam Noodles</div>
+              <div class="ai-result-meta">RM7.50 · Cafe Sihat</div>
+              <div class="ai-result-tags">
+                <span class="tag-green">10 min</span>
+                <span class="tag-blue">Near You</span>
+              </div>
+            </div>
+            <button class="btn-sm-orange" onclick="event.stopPropagation();goTo('screen-food-detail')">Order</button>
+          </div>
+        </div>
+        <nav class="bottom-nav">
+          <div class="nav-item" onclick="goTo('screen-home')"><span>🏠</span><label>Home</label></div>
+          <div class="nav-item" onclick="goTo('screen-discover')"><span>🔍</span><label>Explore</label></div>
+          <div class="nav-item ai-btn active" onclick="goTo('screen-ai')"><span>🤖</span><label>Mimi AI</label></div>
+          <div class="nav-item" onclick="goTo('screen-cart')"><span>🛒</span><label>Cart</label></div>
+          <div class="nav-item" onclick="goTo('screen-home')"><span>👤</span><label>Profile</label></div>
+        </nav>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 5: FOOD DISCOVERY
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-discover">
+        <div class="screen-scroll">
+          <div class="topbar">
+            <button class="back-btn" onclick="goTo('screen-home')">‹</button>
+            <div class="topbar-title">Explore Food</div>
+            <div></div>
+          </div>
+          <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search cuisine or stall..." readonly />
+          </div>
+          <!-- Categories -->
+          <div class="cat-grid">
+            <div class="cat-item" onclick="goTo('screen-stall')"><span>🍚</span><label>Rice</label></div>
+            <div class="cat-item" onclick="goTo('screen-stall')"><span>🍜</span><label>Noodles</label></div>
+            <div class="cat-item" onclick="goTo('screen-stall')"><span>🍗</span><label>Western</label></div>
+            <div class="cat-item" onclick="goTo('screen-stall')"><span>🧃</span><label>Drinks</label></div>
+            <div class="cat-item active" onclick="goTo('screen-stall')"><span>🌙</span><label>Night Food</label></div>
+            <div class="cat-item" onclick="goTo('screen-stall')"><span>💰</span><label>Budget</label></div>
+            <div class="cat-item" onclick="goTo('screen-stall')"><span>📈</span><label>Trending</label></div>
+            <div class="cat-item" onclick="goTo('screen-stall')"><span>⭐</span><label>All</label></div>
+          </div>
+          <!-- Top picks -->
+          <div class="section-row">
+            <span class="section-title">Top Picks for You</span>
+            <span class="see-all" onclick="goTo('screen-stall')">↕</span>
+          </div>
+          <div class="top-picks-row">
+            <div class="top-pick-card" onclick="goTo('screen-food-detail')">
+              <div class="pick-img">🍛</div>
+              <div class="pick-info">
+                <div class="pick-name">Ayam Penyet</div>
+                <div class="pick-price">RM7.50</div>
+                <div class="pick-meta">⚡ Short Queue</div>
+              </div>
+            </div>
+            <div class="top-pick-card" onclick="goTo('screen-food-detail')">
+              <div class="pick-img">🍜</div>
+              <div class="pick-info">
+                <div class="pick-name">Tomyam Noodles</div>
+                <div class="pick-price">RM7.50</div>
+                <div class="pick-meta">📍 Near You</div>
+              </div>
+            </div>
+          </div>
+          <!-- Popular Stalls -->
+          <div class="section-row">
+            <span class="section-title">Popular Stalls</span>
+            <span class="see-all">See All</span>
+          </div>
+          <div class="stall-list">
+            <div class="stall-row" onclick="goTo('screen-stall')">
+              <div class="stall-thumb">🏪</div>
+              <div class="stall-info">
+                <div class="stall-name">Kolej Kitchen</div>
+                <div class="stall-meta">⭐ 4.6 · 12 min queue</div>
+              </div>
+              <span class="heart-btn">♡</span>
+            </div>
+            <div class="stall-row" onclick="goTo('screen-stall')">
+              <div class="stall-thumb">🍜</div>
+              <div class="stall-info">
+                <div class="stall-name">Cafe Sihat</div>
+                <div class="stall-meta">⭐ 4.4 · 8 min queue</div>
+              </div>
+              <span class="heart-btn">♡</span>
+            </div>
+            <div class="stall-row" onclick="goTo('screen-stall')">
+              <div class="stall-thumb">🥗</div>
+              <div class="stall-info">
+                <div class="stall-name">Mamak Corner</div>
+                <div class="stall-meta">⭐ 4.7 · 6 min queue</div>
+              </div>
+              <span class="heart-btn">♡</span>
+            </div>
+          </div>
+        </div>
+        <nav class="bottom-nav">
+          <div class="nav-item" onclick="goTo('screen-home')"><span>🏠</span><label>Home</label></div>
+          <div class="nav-item active" onclick="goTo('screen-discover')"><span>🔍</span><label>Explore</label></div>
+          <div class="nav-item ai-btn" onclick="goTo('screen-ai')"><span>🤖</span><label>Mimi AI</label></div>
+          <div class="nav-item" onclick="goTo('screen-cart')"><span>🛒</span><label>Cart</label></div>
+          <div class="nav-item" onclick="goTo('screen-home')"><span>👤</span><label>Profile</label></div>
+        </nav>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 6: STALL PROFILE
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-stall">
+        <div class="screen-scroll">
+          <div class="stall-hero">
+            <button class="back-btn-white" onclick="goTo('screen-discover')">‹</button>
+            <div class="stall-hero-img">🏪🍽️</div>
+          </div>
+          <div class="stall-profile-card">
+            <div class="stall-profile-header">
+              <div>
+                <div class="stall-profile-name">Kolej Kitchen</div>
+                <div class="stall-profile-tags">
+                  <span class="tag-halal">● Halal</span>
+                  <span class="tag-grey">Noodles · Drinks</span>
+                </div>
+              </div>
+              <div class="stall-profile-rating">⭐ 4.6 <span class="rating-count">(320)</span></div>
+            </div>
+            <!-- Tags row -->
+            <div class="stall-tag-row">
+              <span class="badge-orange">Popular</span>
+              <span class="badge-grey">Good Reviews</span>
+              <span class="badge-green">Fast Delivery</span>
+            </div>
+            <!-- Info rows -->
+            <div class="stall-info-rows">
+              <div class="info-row">
+                <span class="info-icon">📍</span>
+                <span class="info-label">Distance from you</span>
+                <span class="info-val">700m (8 mins walk)</span>
+              </div>
+              <div class="info-row">
+                <span class="info-icon">⏱</span>
+                <span class="info-label">Average Queue Time</span>
+                <span class="info-val">12 – 15 mins</span>
+              </div>
+              <div class="info-row">
+                <span class="info-icon">🚚</span>
+                <span class="info-label">Delivery Time</span>
+                <span class="info-val">5 – 10 mins</span>
+              </div>
+              <div class="info-row">
+                <span class="info-icon">💵</span>
+                <span class="info-label">Delivery Fee</span>
+                <span class="info-val">RM2.00</span>
+              </div>
+            </div>
+            <!-- Best Sellers -->
+            <div class="section-title" style="margin:16px 0 10px">Best Sellers</div>
+            <div class="bestseller-row" onclick="goTo('screen-food-detail')">
+              <div class="bs-img">🍛</div>
+              <div class="bs-info">
+                <div class="bs-name">Nasi Ayam</div>
+                <div class="bs-price">RM6.50</div>
+              </div>
+              <button class="add-btn" onclick="event.stopPropagation();goTo('screen-food-detail')">+</button>
+            </div>
+            <div class="bestseller-row" onclick="goTo('screen-food-detail')">
+              <div class="bs-img">🍜</div>
+              <div class="bs-info">
+                <div class="bs-name">Mee Goreng</div>
+                <div class="bs-price">RM5.50</div>
+              </div>
+              <button class="add-btn" onclick="event.stopPropagation();goTo('screen-food-detail')">+</button>
+            </div>
+            <div class="bestseller-row" onclick="goTo('screen-food-detail')">
+              <div class="bs-img">🧃</div>
+              <div class="bs-info">
+                <div class="bs-name">Teh Tarik</div>
+                <div class="bs-price">RM2.00</div>
+              </div>
+              <button class="add-btn" onclick="event.stopPropagation();goTo('screen-food-detail')">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 7: FOOD DETAIL
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-food-detail">
+        <div class="screen-scroll pb-80">
+          <div class="food-hero">
+            <button class="back-btn-white" onclick="goTo('screen-stall')">‹</button>
+            <div class="food-hero-img">🍛</div>
+          </div>
+          <div class="food-detail-card">
+            <div class="food-name-row">
+              <div>
+                <div class="food-name">Nasi Ayam</div>
+                <div class="food-rating">⭐ 4.6 (230) · 5–10 mins</div>
+              </div>
+              <div class="food-price">RM6.50</div>
+            </div>
+            <p class="food-desc">Fragrant rice with grilled chicken, sambal, and fresh veggies. A campus favourite loved by students.</p>
+            <!-- AI insights -->
+            <div class="ai-insights-card">
+              <div class="ai-insights-title">🤖 AI Insights</div>
+              <div class="ai-insight-row"><span class="ai-icon-orange">🔥</span> Popular among first-year students</div>
+              <div class="ai-insight-row"><span class="ai-icon-orange">⚡</span> Fastest lunch option</div>
+              <div class="ai-insight-row"><span class="ai-icon-orange">💰</span> Best value meal today</div>
+            </div>
+            <!-- Add-ons -->
+            <div class="section-title" style="margin: 14px 0 10px">Add-ons</div>
+            <div class="addon-row">
+              <div class="addon-check">
+                <input type="checkbox" id="addon1" />
+                <label for="addon1">Extra Sambal</label>
+              </div>
+              <span class="addon-price">+ RM1.00</span>
+            </div>
+            <div class="addon-row">
+              <div class="addon-check">
+                <input type="checkbox" id="addon2" />
+                <label for="addon2">Extra Rice</label>
+              </div>
+              <span class="addon-price">+ RM1.50</span>
+            </div>
+            <!-- Qty -->
+            <div class="qty-row">
+              <div class="qty-ctrl">
+                <button class="qty-btn" onclick="changeQty(-1)">−</button>
+                <span class="qty-val" id="qty-val">1</span>
+                <button class="qty-btn" onclick="changeQty(1)">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sticky-cart-bar">
+          <button class="btn-primary btn-full" onclick="goTo('screen-cart')">Add to Cart — RM6.50</button>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 8: CART
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-cart">
+        <div class="screen-scroll pb-80">
+          <div class="topbar">
+            <button class="back-btn" onclick="goTo('screen-food-detail')">‹</button>
+            <div class="topbar-title">Your Cart</div>
+            <div></div>
+          </div>
+          <div class="cart-section">
+            <div class="cart-item">
+              <div class="cart-item-img">🍛</div>
+              <div class="cart-item-info">
+                <div class="cart-item-name">Nasi Ayam</div>
+                <div class="cart-item-price">RM6.50</div>
+              </div>
+              <div class="cart-qty-ctrl">
+                <button class="qty-btn">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn">+</button>
+              </div>
+            </div>
+            <div class="cart-item">
+              <div class="cart-item-img">🧃</div>
+              <div class="cart-item-info">
+                <div class="cart-item-name">Iced Milo</div>
+                <div class="cart-item-price">RM2.50</div>
+              </div>
+              <div class="cart-qty-ctrl">
+                <button class="qty-btn">−</button>
+                <span class="qty-val">1</span>
+                <button class="qty-btn">+</button>
+              </div>
+            </div>
+          </div>
+          <!-- Delivery options -->
+          <div class="section-title" style="margin: 16px 16px 10px">Delivery Option</div>
+          <div class="delivery-opts">
+            <label class="delivery-opt">
+              <div class="delivery-opt-info">
+                <input type="radio" name="delivery" checked />
+                <div>
+                  <div class="opt-title">Standard Delivery</div>
+                  <div class="opt-sub">RM2.00 · 5–10 mins</div>
+                </div>
+              </div>
+            </label>
+            <label class="delivery-opt">
+              <div class="delivery-opt-info">
+                <input type="radio" name="delivery" />
+                <div>
+                  <div class="opt-title">🎓 Student Rider</div>
+                  <div class="opt-sub">RM1.50 · 5–10 mins</div>
+                </div>
+              </div>
+            </label>
+            <label class="delivery-opt">
+              <div class="delivery-opt-info">
+                <input type="radio" name="delivery" />
+                <div>
+                  <div class="opt-title">📅 Scheduled Delivery</div>
+                  <div class="opt-sub">Choose your time</div>
+                </div>
+              </div>
+              <span class="opt-arrow" onclick="goTo('screen-schedule')">›</span>
+            </label>
+          </div>
+          <!-- Group order CTA -->
+          <div class="group-cta" onclick="goTo('screen-group')">
+            <span>👥 Order with friends — split the delivery fee!</span>
+            <span class="group-cta-arrow">›</span>
+          </div>
+          <!-- Totals -->
+          <div class="cart-totals">
+            <div class="total-row"><span>Subtotal</span><span>RM9.00</span></div>
+            <div class="total-row"><span>Delivery Fee</span><span>RM2.00</span></div>
+            <div class="total-row total-bold"><span>Total</span><span>RM11.00</span></div>
+          </div>
+        </div>
+        <div class="sticky-cart-bar">
+          <button class="btn-primary btn-full" onclick="goTo('screen-group')">Proceed to Checkout</button>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 9: GROUP ORDER
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-group">
+        <div class="screen-scroll pb-80">
+          <div class="topbar">
+            <button class="back-btn" onclick="goTo('screen-cart')">‹</button>
+            <div class="topbar-title">Group Order <span class="optional-tag">(Optional)</span></div>
+            <div></div>
+          </div>
+          <div class="group-center">
+            <div class="group-illustration">
+              <span style="font-size:60px">👥</span>
+            </div>
+            <div class="group-title">Create Group Order</div>
+            <div class="group-sub">Invite friends to order together<br>and save on delivery!</div>
+            <div class="group-avatars">
+              <div class="g-avatar orange">M</div>
+              <div class="g-avatar blue">A</div>
+              <div class="g-avatar pink">N</div>
+              <div class="g-avatar add">+</div>
+            </div>
+            <button class="btn-primary btn-full" onclick="goTo('screen-split')">Create New Group</button>
+            <button class="btn-ghost btn-full" onclick="goTo('screen-payment')">Join Group</button>
+            <div class="skip-group" onclick="goTo('screen-payment')">Skip, checkout alone →</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 10: SPLIT PAYMENT
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-split">
+        <div class="screen-scroll pb-80">
+          <div class="topbar">
+            <button class="back-btn" onclick="goTo('screen-group')">‹</button>
+            <div class="topbar-title">Split with Friends</div>
+            <button class="invite-link-btn" onclick="goTo('screen-payment')">Invite Link</button>
+          </div>
+          <div class="split-total-card">
+            <div class="split-label">Total Amount</div>
+            <div class="split-total-row">
+              <span class="split-total-val">RM24.00</span>
+              <span class="split-you-pay">You Pay <strong class="orange-text">RM8.00</strong></span>
+            </div>
+          </div>
+          <div class="section-title" style="margin:16px 16px 10px">Participants (3)</div>
+          <div class="split-list">
+            <div class="split-person">
+              <div class="split-avatar orange">M</div>
+              <div class="split-info">
+                <div class="split-name">Maryam (You)</div>
+                <div class="split-method">TNG eWallet</div>
+              </div>
+              <div class="split-amt orange-text">RM8.00</div>
+            </div>
+            <div class="split-person">
+              <div class="split-avatar blue">A</div>
+              <div class="split-info">
+                <div class="split-name">Aliyah</div>
+                <div class="split-method">Credit Card</div>
+              </div>
+              <div class="split-amt">
+                <div>RM8.00</div>
+                <span class="split-badge pending">Pending</span>
+              </div>
+            </div>
+            <div class="split-person">
+              <div class="split-avatar pink">N</div>
+              <div class="split-info">
+                <div class="split-name">Nia</div>
+                <div class="split-method">Debit Card</div>
+              </div>
+              <div class="split-amt">
+                <div>RM8.00</div>
+                <span class="split-badge paid">Paid</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn-add-friend">+ Add Friend</button>
+        </div>
+        <div class="sticky-cart-bar">
+          <button class="btn-primary btn-full" onclick="goTo('screen-payment')">Proceed to Payment</button>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 11: PAYMENT
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-payment">
+        <div class="screen-scroll pb-80">
+          <div class="topbar">
+            <button class="back-btn" onclick="goTo('screen-split')">‹</button>
+            <div class="topbar-title">Choose Payment Method</div>
+            <div></div>
+          </div>
+          <div class="payment-list">
+            <label class="payment-option selected">
+              <div class="payment-icon tng">💳</div>
+              <span class="payment-label">TNG eWallet</span>
+              <input type="radio" name="payment" checked />
+              <span class="radio-tick">✔</span>
+            </label>
+            <label class="payment-option" onclick="selectPayment(this)">
+              <div class="payment-icon card">💳</div>
+              <span class="payment-label">Debit / Credit Card</span>
+              <input type="radio" name="payment" />
+              <div class="card-icons">💳 💳</div>
+            </label>
+            <label class="payment-option" onclick="selectPayment(this)">
+              <div class="payment-icon bank">🏦</div>
+              <span class="payment-label">Online Banking</span>
+              <input type="radio" name="payment" />
+            </label>
+            <label class="payment-option" onclick="selectPayment(this)">
+              <div class="payment-icon cash">💵</div>
+              <span class="payment-label">Cash on Delivery</span>
+              <input type="radio" name="payment" />
+            </label>
+          </div>
+          <div class="pay-summary">
+            <div class="total-row"><span>You Pay</span><span class="orange-text"><strong>RM8.00</strong></span></div>
+          </div>
+        </div>
+        <div class="sticky-cart-bar">
+          <button class="btn-primary btn-full" onclick="goTo('screen-tracking')">Pay Now</button>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 12: LIVE GPS TRACKING
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-tracking">
+        <div class="screen-scroll pb-80">
+          <div class="topbar">
+            <button class="back-btn" onclick="goTo('screen-payment')">‹</button>
+            <div class="topbar-title-col">
+              <div class="topbar-title">Order #MF-7821</div>
+              <div class="topbar-sub">Nasi Ayam + Iced Milo</div>
+            </div>
+            <span class="on-the-way-badge">On the way</span>
+          </div>
+          <!-- Map placeholder -->
+          <div class="map-placeholder">
+            <div class="map-bg">
+              <div class="map-road map-road-h"></div>
+              <div class="map-road map-road-v"></div>
+              <div class="map-rider-pin">🛵</div>
+              <div class="map-dest-pin">📍</div>
+            </div>
+          </div>
+          <!-- Status timeline -->
+          <div class="tracking-timeline">
+            <div class="track-step done">
+              <div class="track-dot filled"></div>
+              <div class="track-label">
+                <span class="track-name">Confirmed</span>
+                <span class="track-time">10:30 AM</span>
+              </div>
+            </div>
+            <div class="track-line done"></div>
+            <div class="track-step done">
+              <div class="track-dot filled"></div>
+              <div class="track-label">
+                <span class="track-name">Preparing</span>
+                <span class="track-time">10:35 AM</span>
+              </div>
+            </div>
+            <div class="track-line done"></div>
+            <div class="track-step done">
+              <div class="track-dot filled"></div>
+              <div class="track-label">
+                <span class="track-name">Picked Up</span>
+                <span class="track-time">10:42 AM</span>
+              </div>
+            </div>
+            <div class="track-line active"></div>
+            <div class="track-step active">
+              <div class="track-dot current"></div>
+              <div class="track-label">
+                <span class="track-name">On the Way</span>
+                <span class="track-time">Rider is on the way</span>
+              </div>
+            </div>
+            <div class="track-line"></div>
+            <div class="track-step">
+              <div class="track-dot empty"></div>
+              <div class="track-label">
+                <span class="track-name">Arriving Soon</span>
+                <span class="track-time grey">Almost there!</span>
+              </div>
+            </div>
+          </div>
+          <!-- Rider info -->
+          <div class="rider-card">
+            <div class="rider-avatar">🧑</div>
+            <div class="rider-info">
+              <div class="rider-name">Amir</div>
+              <div class="rider-rating">⭐ 4.9 · 2 mins away</div>
+            </div>
+            <div class="rider-actions">
+              <button class="rider-action-btn">📞</button>
+              <button class="rider-action-btn">💬</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 13: DELIVERED + FEEDBACK
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-delivered">
+        <div class="screen-scroll pb-80">
+          <div class="topbar">
+            <div></div>
+            <div class="topbar-title">Order Delivered</div>
+            <div></div>
+          </div>
+          <div class="delivered-center">
+            <div class="checkmark-circle">✔</div>
+            <div class="delivered-title">Order Delivered!</div>
+            <div class="delivered-sub">Enjoy your meal 🍽️</div>
+          </div>
+          <div class="feedback-card">
+            <div class="feedback-title">How was your experience?</div>
+            <div class="stars-row" id="star-row">
+              <span class="star active" onclick="rateStar(1)">★</span>
+              <span class="star active" onclick="rateStar(2)">★</span>
+              <span class="star active" onclick="rateStar(3)">★</span>
+              <span class="star active" onclick="rateStar(4)">★</span>
+              <span class="star active" onclick="rateStar(5)">★</span>
+            </div>
+            <textarea class="comment-box" placeholder="Add a comment (optional)..."></textarea>
+            <button class="btn-primary btn-full" onclick="goTo('screen-home')">Submit Review</button>
+          </div>
+          <!-- Optional features -->
+          <div class="opt-features-row">
+            <div class="opt-feature-card" onclick="goTo('screen-schedule')">
+              <span class="opt-icon">📅</span>
+              <div class="opt-text">
+                <div class="opt-title-text">Schedule Delivery</div>
+                <div class="opt-sub-text"><em>(Optional)</em></div>
+              </div>
+            </div>
+            <div class="opt-feature-card night" onclick="goTo('screen-night')">
+              <span class="opt-icon">🌙</span>
+              <div class="opt-text">
+                <div class="opt-title-text">Night Food Finder</div>
+                <div class="opt-sub-text"><em>(Optional)</em></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 14A: SCHEDULE DELIVERY (Optional)
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-schedule">
+        <div class="screen-scroll">
+          <div class="topbar">
+            <button class="back-btn" onclick="goTo('screen-cart')">‹</button>
+            <div class="topbar-title">Schedule Delivery <span class="optional-tag">(Optional)</span></div>
+            <div></div>
+          </div>
+          <div class="schedule-card">
+            <div class="schedule-icon">📅</div>
+            <div class="schedule-title">Choose date &amp; time</div>
+            <div class="schedule-sub">We will deliver at your selected time</div>
+            <div class="schedule-inputs">
+              <div class="input-group">
+                <label>Date</label>
+                <input type="date" class="input-field" />
+              </div>
+              <div class="input-group">
+                <label>Time</label>
+                <input type="time" class="input-field" />
+              </div>
+            </div>
+            <button class="btn-primary btn-full" onclick="goTo('screen-cart')">Select Time</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─────────────────────────────────────────
+           SCREEN 14B: NIGHT FOOD FINDER (Optional)
+      ───────────────────────────────────────── -->
+      <div class="screen" id="screen-night">
+        <div class="screen-scroll">
+          <div class="topbar">
+            <button class="back-btn" onclick="goTo('screen-delivered')">‹</button>
+            <div class="topbar-title">Night Food Finder <span class="optional-tag">(Optional)</span></div>
+            <div></div>
+          </div>
+          <div class="night-card">
+            <div class="night-icon">🌙</div>
+            <div class="night-title">Hungry at night?</div>
+            <div class="night-sub">Find stalls open late near you.</div>
+            <div class="night-stalls">
+              <div class="stall-row" onclick="goTo('screen-stall')">
+                <div class="stall-thumb">🌙</div>
+                <div class="stall-info">
+                  <div class="stall-name">Mamak Corner</div>
+                  <div class="stall-meta">Open until 3 AM · 6 min queue</div>
+                </div>
+                <span class="badge-green">Open</span>
+              </div>
+              <div class="stall-row" onclick="goTo('screen-stall')">
+                <div class="stall-thumb">🍜</div>
+                <div class="stall-info">
+                  <div class="stall-name">Night Noodle Stall</div>
+                  <div class="stall-meta">Open until 2 AM · 10 min queue</div>
+                </div>
+                <span class="badge-green">Open</span>
+              </div>
+              <div class="stall-row">
+                <div class="stall-thumb">🏪</div>
+                <div class="stall-info">
+                  <div class="stall-name">Kolej Kitchen</div>
+                  <div class="stall-meta">Closes at 10 PM</div>
+                </div>
+                <span class="badge-grey-sm">Closed</span>
+              </div>
+            </div>
+            <button class="btn-primary btn-full" onclick="goTo('screen-discover')">Explore Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end #app -->
+  </div><!-- end phone-shell -->
+
+  <!-- SCREEN NAVIGATION BAR (desktop) -->
+  <div class="screen-nav">
+    <div class="screen-nav-title">MimiFood Screens</div>
+    <div class="screen-nav-list">
+      <button onclick="goTo('screen-splash')">1. Splash</button>
+      <button onclick="goTo('screen-onboard')">2. Onboard</button>
+      <button onclick="goTo('screen-home')">3. Home</button>
+      <button onclick="goTo('screen-ai')">4. Mimi AI</button>
+      <button onclick="goTo('screen-discover')">5. Discover</button>
+      <button onclick="goTo('screen-stall')">6. Stall</button>
+      <button onclick="goTo('screen-food-detail')">7. Food Detail</button>
+      <button onclick="goTo('screen-cart')">8. Cart</button>
+      <button onclick="goTo('screen-group')">9. Group</button>
+      <button onclick="goTo('screen-split')">10. Split Pay</button>
+      <button onclick="goTo('screen-payment')">11. Payment</button>
+      <button onclick="goTo('screen-tracking')">12. Tracking</button>
+      <button onclick="goTo('screen-delivered')">13. Delivered</button>
+      <button onclick="goTo('screen-schedule')">14a. Schedule</button>
+      <button onclick="goTo('screen-night')">14b. Night</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
