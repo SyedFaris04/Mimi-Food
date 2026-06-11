@@ -32,39 +32,27 @@ body{
 
 /* ── PHONE SHELL ── */
 .shell{
-  width:393px;flex-shrink:0;
+  width:390px;flex-shrink:0;
   background:#0a0a0a;
-  border-radius:54px;
-  padding:12px 12px 10px;
-  box-shadow:
-    0 0 0 1px #3a3a3a,
-    0 0 0 3px #0a0a0a,
-    0 40px 100px rgba(0,0,0,.8),
-    inset 0 0 0 1px rgba(255,255,255,.05);
+  border-radius:50px;
+  padding:12px;
+  box-shadow:0 0 0 1px #2a2a2a, 0 40px 100px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.05);
   position:relative;
-  display:flex;
-  flex-direction:column;
 }
-/* Notch bar at top of shell — sits in flow ABOVE screen-wrap */
 .shell-notch{
-  height:36px;
-  display:flex;align-items:center;justify-content:center;gap:7px;
-  flex-shrink:0;
-  position:relative;
-  z-index:5;
+  position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  width:110px;height:30px;
+  background:#0a0a0a;border-radius:0 0 18px 18px;
+  z-index:20;
+  display:flex;align-items:center;justify-content:center;gap:6px;
 }
-.notch-dot{width:10px;height:10px;border-radius:50%;background:#1c1c1e}
-.notch-pill{width:44px;height:5px;border-radius:3px;background:#1c1c1e}
-.shell-btn{position:absolute;width:3.5px;border-radius:2px;background:#2a2a2a}
-/* Home indicator at bottom */
-.shell-home{
-  height:5px;width:120px;background:#333;border-radius:3px;
-  margin:8px auto 0;display:block;flex-shrink:0;
-}
+.notch-dot{width:8px;height:8px;border-radius:50%;background:#1a1a1a;border:1.5px solid #2a2a2a}
+.notch-pill{width:40px;height:4px;border-radius:2px;background:#1a1a1a}
+.shell-btn{position:absolute;width:3px;border-radius:2px;background:#1e1e1e}
 
-/* ── SCREEN WRAP ── */
+/* ── SCREEN ── */
 .screen-wrap{
-  flex:1;
+  width:100%;height:844px;
   border-radius:40px;
   overflow:hidden;
   position:relative;
@@ -162,13 +150,12 @@ body{
 .sb-btn:hover{background:rgba(255,138,0,.2);color:#FF8A00}
 
 @media(max-width:520px){
-  body{padding:0;background:#1C1C1E;align-items:flex-start}
-  .shell{width:100%;border-radius:0;padding:0;box-shadow:none;min-height:100svh}
-  .shell-notch,.shell-btn,.shell-home{display:none}
-  .screen-wrap{border-radius:0;height:100svh;flex:none}
+  body{padding:0}
+  .shell{width:100%;border-radius:0;padding:0;box-shadow:none}
+  .shell-notch,.shell-btn{display:none}
+  .screen-wrap{height:100svh;border-radius:0}
   #sidebar{display:none}
   .status-bar{display:none}
-  .page.padtop{padding-top:0}
 }
 
 /* ════════════════════════════════
@@ -629,14 +616,11 @@ body{
 
 <!-- PHONE SHELL -->
 <div class="shell">
-  <!-- Side buttons (positioned relative to shell edges) -->
-  <div class="shell-btn" style="right:-3.5px;top:170px;height:64px"></div>
-  <div class="shell-btn" style="left:-3.5px;top:152px;height:36px"></div>
-  <div class="shell-btn" style="left:-3.5px;top:202px;height:64px"></div>
-  <div class="shell-btn" style="left:-3.5px;top:280px;height:64px"></div>
-  <!-- Notch — sits on top of screen-wrap -->
+  <div class="shell-btn" style="right:-3px;top:155px;height:62px"></div>
+  <div class="shell-btn" style="left:-3px;top:135px;height:34px"></div>
+  <div class="shell-btn" style="left:-3px;top:183px;height:62px"></div>
+  <div class="shell-btn" style="left:-3px;top:259px;height:62px"></div>
   <div class="shell-notch"><div class="notch-pill"></div><div class="notch-dot"></div></div>
-  <!-- The display area -->
   <div class="screen-wrap">
     <div class="status-bar">
       <span class="sb-time" id="sb-clock">9:41</span>
@@ -1316,8 +1300,6 @@ body{
 
     </div><!-- #app -->
   </div><!-- .screen-wrap -->
-  <!-- Home indicator bar -->
-  <div class="shell-home"></div>
 </div><!-- .shell -->
 
 <!-- SIDEBAR NAV -->
